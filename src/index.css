@@ -1,0 +1,172 @@
+/* src/index.css */
+
+@import "react-big-calendar/lib/css/react-big-calendar.css";
+
+/* 1) Load a modern font (Inter) — MUST be at the top before other statements */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+/* index.css (top) */
+
+
+/* 2) Tailwind base */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 3) Theme variables (use in inline styles or custom classes) */
+:root{
+  --muted: #6B7280;
+  --bg-soft: #fbfcff;
+  --card-bg: #ffffff;
+  --glass: rgba(255,255,255,0.6);
+  --radius-lg: 14px;
+  --radius-md: 10px;
+  --shadow-soft: 0 6px 18px rgba(12,60,120,0.06);
+  --shadow-subtle: 0 4px 10px rgba(2,6,23,0.06);
+  --brand-light: #f7fafc;
+  --brand-blue-600: rgba(12,60,120,0.9);
+  --brand-blue: #0C3C78;
+  --brand-orange: #F15A24;
+  --nav-bg: var(--brand-blue);
+  --nav-accent: var(--brand-orange);
+}
+
+/* 4) Base page style */
+html,body,#root{
+  height:100%;
+}
+body{
+  font-family: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: linear-gradient(180deg, #ffffff 0%, var(--bg-soft) 100%);
+  color: #0f172a;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.45;
+}
+
+/* 5) Card / panel improvements - used instead of raw .border .shadow-sm combinations */
+.card {
+  background: var(--card-bg);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(15,23,42,0.04);
+  padding: 1rem;
+}
+
+/* 6) Subtle header / title treatments */
+.h-title{
+  color: var(--brand-blue);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* 7) Buttons: primary / ghost / icon */
+.btn {
+  display: inline-flex;
+  align-items:center;
+  gap:0.5rem;
+  padding: 0.55rem 0.9rem;
+  border-radius: 10px;
+  font-weight:600;
+  cursor:pointer;
+  transition: transform .06s ease, box-shadow .12s ease, opacity .12s ease;
+}
+.btn:active{ transform: translateY(1px); }
+.btn-primary {
+  background: linear-gradient(180deg, var(--brand-blue), #072a53);
+  color: white;
+  box-shadow: 0 6px 18px rgba(12,60,120,0.12);
+}
+.btn-ghost {
+  background: transparent;
+  border: 1px solid rgba(15,23,42,0.06);
+  color: var(--brand-blue);
+}
+
+/* Icon button */
+.icon-btn {
+  display:inline-grid;
+  place-items:center;
+  width:40px;
+  height:40px;
+  border-radius:12px;
+  background: rgba(241,90,36,0.06);
+  border: 1px solid rgba(241,90,36,0.14);
+  color: var(--brand-orange);
+  transition: transform .08s ease, background .12s;
+}
+.icon-btn:hover { transform: translateY(-2px); background: rgba(241,90,36,0.12); }
+
+/* 8) Form fields: softer look */
+.input, textarea {
+  width:100%;
+  padding:0.65rem 0.85rem;
+  border-radius:10px;
+  border: 1px solid rgba(15,23,42,0.06);
+  background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(250,250,251,0.9));
+  box-shadow: var(--shadow-subtle);
+  outline: none;
+  transition: box-shadow .12s ease, border-color .12s ease;
+}
+.input:focus, textarea:focus {
+  border-color: rgba(12,60,120,0.18);
+  box-shadow: 0 6px 18px rgba(12,60,120,0.06);
+}
+
+/* 9) Pills / badges */
+.pill {
+  display:inline-flex; align-items:center; gap:0.4rem;
+  padding:0.25rem 0.6rem; border-radius:999px; font-weight:600; font-size:.75rem;
+}
+.pill-primary { background: rgba(12,60,120,0.08); color: var(--brand-blue); }
+.pill-muted { background: rgba(15,23,42,0.04); color:var(--muted); }
+
+/* Small pill used above active bottom icon */
+.bottom-pill {
+  width: 32px;
+  height: 6px;
+  border-radius: 999px;
+  transform-origin: center;
+}
+
+
+/* Smooth transitions helper */
+.animate-smooth {
+  transition: all 200ms cubic-bezier(.2,.9,.2,1);
+}
+
+/* 10) Responsive tweaks */
+@media (max-width: 768px){
+  .icon-btn { width:44px; height:44px; }
+  .btn { padding: 0.5rem 0.75rem; border-radius:8px; }
+  .card { padding: 0.75rem; border-radius: 12px; }
+  .input, textarea { padding: 0.6rem; }
+  body { font-size: 15px; }
+}
+
+/* 🧭 react-big-calendar modern look */
+.rbc-toolbar {
+  background: #f8fafc;
+  padding: 8px 12px;
+}
+
+.rbc-toolbar button {
+  background: transparent;
+  color: #0C3C78;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 4px 10px;
+  transition: all 0.2s;
+}
+.rbc-toolbar button:hover {
+  background: #0C3C78;
+  color: white;
+}
+
+.rbc-month-view {
+  border-radius: 0 0 12px 12px;
+}
+.rbc-today {
+  background: rgba(241, 90, 36, 0.15) !important;
+  border-radius: 50%;
+}
+
